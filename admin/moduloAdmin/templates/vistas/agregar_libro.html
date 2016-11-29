@@ -1,0 +1,127 @@
+{% extends 'generico/generico.html' %}
+
+{% block contenido %} 
+
+<div class="container borde">
+	
+	<form action="/administrar/nuevo-libro" method="post">
+		{% csrf_token %}
+			
+			<div class="row">
+
+				<!--***************************categoaría**************-->
+				<div class="form-group col-md-5 col-md-offset-1 text-center"> <!--categoría-->							
+					<label for="categoria"><p class="opcion_formulario">Categoría</p></label>
+					<div id="select_catego">
+						<select id="selector_categoria" name="categoria" class="form-control">			
+						       <option> categoria </option>
+						</select>
+					</div>
+				</div>
+				
+
+				<div class="row">				
+
+					<!--************************titulo********************-->
+					<div class="form-group col-md-6 text-center"><!--título-->							
+						<label for="titulo_articulo"><p class="opcion_formulario">Título</p></label>
+						<input type="text" name="titulo_articulo" class="form-control" placeholder="Título del articulo" required="true">
+					</div>
+
+					<!--************************boton visible en md y lg********************-->
+					<div class="row visible-md-block visible-lg-block"">
+						<div class="col-md-1 col-md-offset-4 ">
+							<a id="boton_prueba" href="#ventana_agregar_categoria" role="button" class="btn btn-default btn-sm boton_categoria boton_formulario" data-toggle="modal">Nueva categoría</a>
+									
+						</div>			
+
+
+					</div>
+
+				</div><!--div-->				
+			
+		</div><!--div fila categoria y titulo-->		
+
+		<!--******************alertas para categoría visible en md y lg************************************-->
+		<div class="row visible-md-block visible-lg-block">
+			<div id="alerta_exito_categoria_md" class="row alert alert-success" role="alert" hidden>
+			</div>
+		</div>	
+
+		<div class="row visible-md-block visible-lg-block">
+			<div id="alerta_error_categoria_md" class="row alert alert-warning" role="alert" hidden>
+			</div>
+		</div>	
+		<!--******************fin alertas md y lg************************************-->
+		
+
+		<!--******************autor y fecha ************************************-->
+		<div class="row">			
+			<div class="form-group col-md-5 col-md-offset-1 text-center">
+				<label for="autor"><p class="opcion_formulario">Autor</p></label>
+				<input type="text" name="autor" class="form-control" placeholder="Autor" required>
+			</div>
+
+			<div class="form-group col-md-6 text-center">
+				<label for="fecha"><p class="opcion_formulario">Fecha de publicación</p></label>
+				<input id="fecha_articulo" type="date" name="fecha" class="form-control" placeholder="dd/mm/yyyy" required>					
+			</div>
+		</div>
+		<!--******************fin autor y fecha ************************************-->
+
+		<!--******************imagen************************************-->
+		<div class="row">
+			<div class="form-group col-xs-12 col-xs-offset-1">
+
+				<label for="imagen"><p class="opcion_formulario">Imágen</p></label>				
+				<input type="file" class="" name="imagen_articulo" id="imagen_articulo" />
+				<p class="help-block">Búsque una imagen para este libro...</p>
+
+			</div>
+		</div>
+		<!--******************fin imagen************************************-->
+
+		<!--******************  contenido************************************-->		
+		<div class="row">	
+			
+			<div class="form-group col-md-11 col-md-offset-1">
+				<label for="descripcion"><p class="opcion_formulario">Descripcion</p></label>
+
+				<textarea id="textarea_contenido" name="descripcion" class="form-control" rows="20" placeholder="Escriba el contenido del artículo..."></textarea>
+				<div class="panel panel-default">		
+				</div>
+			</div>
+		</div><!--div fila 4 contenido-->		
+
+
+
+		<!--*******************************alerta para el articulo*************************-->
+		<div class="row ">
+			<div id="alerta_exito_articulo" class="row alert alert-success text-center" role="alert" hidden>
+			</div>
+
+			<div id="alerta_error_articulo" class="row alert alert-warning text-center" role="alert" hidden>
+			</div>
+		</div>
+		<!--*******************************final alerta para el articulo*************************-->
+
+
+		<!--*******************************botones*************************-->
+		<div class="row">			
+			<div class="form-group col-xs-1 col-xs-offset-5">
+				<!--*<button type="button" onclick="nuevo_articulo()" class="btn btn-default boton_formulario">Enviar</button>-->
+				<input type="submit" name="" class="btn btn-default boton_formulario">
+			</div>
+
+			<div class="form-group col-xs-1 col-xs-offset-1">
+				<button type="button"  onclick="" class="btn btn-default boton_formulario">Cancelar</button>
+			</div>
+
+		</div>
+	</form>
+
+
+
+</div>
+
+{% endblock %}
