@@ -4,5 +4,6 @@ from views import *
 
 urlpatterns = [
     url(r'^/agregar-libro', agregarLibro, name='agregarLibro'),   
-    url(r'^/nuevo-libro', nuevoLibro, name='nuevoLibro'),   
-]
+    url(r'^/nuevo-libro', nuevoLibro, name='nuevoLibro'),
+    url(r'^/editar-libros', listarLibros, name='nuevoLibro'),
+]	
