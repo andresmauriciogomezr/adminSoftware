@@ -4,5 +4,5 @@ from django.conf.urls import url
 from views import RegistroUsuario
 
 urlpatterns = [
-    url(r'^/usuarios', RegistroUsuario.as_view(), name='registrar'),       
+    url(r'^/', RegistroUsuario.as_view(), name='registrar'),       
 ]	

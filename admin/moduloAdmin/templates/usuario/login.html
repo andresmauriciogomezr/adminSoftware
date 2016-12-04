@@ -1,0 +1,68 @@
+{% extends 'generico/generico.html' %}
+
+{% block login %} 
+
+<div class="container panel panel-default no_fondo">
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<div class="form-group col-xs-3 col-xs-offset-5">
+			<input type="submit"></input>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
+
+
+{% block menu_admin %} 
+<div class="container menu_administrar" id="div_menu_administrar">
+
+      <nav class="row navbar navbar-default navbar-fixed-menu_administrar borde_barra_administrar"><!--************************************menú administrar************************-->
+
+        <div id="barra_administrar" class="container-fluid" >
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  aria-expanded="false">
+              <span class="sr-only"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>           
+          </div>
+        
+
+          <div class=" navbar-collapse" id="opciones_barra_administrar">
+
+            <ul class="nav nav-pills navbar-nav pull-right" id="opciones_administrar">
+              <li>
+                <a href="" id="titulo_menu_administrar navbar-right" class="navbar-brand opcion_administrar col-md-1" >Admin</a>
+              </li>            
+                            
+            </ul>     
+          </div>        
+      </nav>  
+    </div><!--************************************menú administrar**************************************-->
+
+    <script type="text/javascript">
+	
+	$(document).ready(function (){
+		$("form p").addClass('form-group col-xs-7 col-xs-offset-3 ');
+		$(".errorlist").addClass('form-group col-xs-7 col-xs-offset-3 ');
+		$(".errorlist li").addClass('warning prueba');
+		$("label").addClass('opcion_cabecera');
+		$("input").addClass('form-control');
+	});
+</script>
+
+<style type="text/css">
+	.prueba{
+		
+		border-top: 1px solid #ddd;
+		font-size: 18px;
+		color: #BA7D4B;
+	}
+</style>
+
+{% endblock %}
+
+

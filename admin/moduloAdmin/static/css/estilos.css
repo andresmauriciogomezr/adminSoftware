@@ -78,7 +78,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#293f3f', end
 }
 .opcion_formulario{
 	font-family: sans-serif;
-	font-size: 1.8em;	
+	font-size: 20px;	
 }
 
 #titulo_pagina{
@@ -352,16 +352,6 @@ box-shadow: -12px -10px 30px -6px rgba(27,35,51,1);
 
 
 @media screen and (max-width: 992px){
-
-.opcion_cabecera{
-	font-size: 5em;
-}
-
-.opcion_cabecera li{
-	font-size: 5em;
-	line-height: 3em;
-	padding-top: 20
-}
 
 .opcion_administrar{
 	font-size: 3.5em;

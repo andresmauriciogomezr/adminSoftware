@@ -1,0 +1,46 @@
+{% extends 'generico/generico.html' %}
+
+{% block contenido %} 
+	<div class="container">		
+		<div class="titulo_pagina row" id="titulo_ingresar_articulo">
+			<blockquote class="page-header" style="padding-top:0px;">
+				<h5 id="titulo_pagina">Edíte sus libros<small>Libros...</small></h5>
+			</blockquote>        
+		</div>	
+
+
+		{% if libros|length > 0 %}		    
+			    <div class="row" id="div_articulos"><!--*********aquí se cargan los articulos**************-->
+				
+					{% for libro in libros %}
+						<div class="col-md-6">
+							<div class="thumbnail thumbnail_editar row" >
+								<div id="{{libro.id}}" class="scroll caption scroll_editar">
+										<div id="imagen_cuadro_articulo" class="col-xs-13">										
+	    									<img src="{{libro.ruta_imagen}}" class="img-responsive"">	
+										</div>
+										<div class="col-xs-13" >
+											<h3 class="titulo_cuadro_articulo">{{libro.nombre}}</h3>
+										</div>
+										<div class="col-xs-13" >
+											<p id="parrafo_articulo" class="parrafo_articulo">{{libro.resumen}}</p>
+										</div>
+								</div>
+								<div class="">
+									<a href="{% url 'editarLibro' %}?id={{libro.id}}" id="" class="btn boton_enviar_articulo enlace_modal" ">
+										<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+										Editar										
+									</a>
+									<a href="{% url 'eliminarLibro' %}?id={{libro.id}}"  class="btn boton_eliminar_articulo enlace_modal" >
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+										Eliminar	
+									</a>
+								</div>
+							</div>
+						</div>				    
+					{% endfor %}
+			</div>
+			
+		{% endif %}
+	</div>
+{% endblock %}

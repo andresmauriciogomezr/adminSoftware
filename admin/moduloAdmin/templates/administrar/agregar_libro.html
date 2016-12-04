@@ -2,9 +2,16 @@
 
 {% block contenido %} 
 
-<div class="container borde">
+<div class="container">
+
+
+	<div class="titulo_pagina row" id="titulo_ingresar_articulo">
+		<blockquote class="page-header" style="padding-top:0px;">
+			<h5 id="titulo_pagina">Ingrese un Libro <small>Libros</small></h5>
+		</blockquote>        
+	</div>	
 	
-	<form action="/administrar/nuevo-libro" method="post">
+	<form action="{% url 'nuevoLibro' %}" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 			
 			<div class="row">
@@ -13,8 +20,10 @@
 				<div class="form-group col-md-5 col-md-offset-1 text-center"> <!--categoría-->							
 					<label for="categoria"><p class="opcion_formulario">Categoría</p></label>
 					<div id="select_catego">
-						<select id="selector_categoria" name="categoria" class="form-control">			
-						       <option> categoria </option>
+						<select id="selector_categoria" name="categoria" class="form-control">		
+							{% for categoria in categorias %}
+								<option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+							{% endfor %}
 						</select>
 					</div>
 				</div>
@@ -24,8 +33,8 @@
 
 					<!--************************titulo********************-->
 					<div class="form-group col-md-6 text-center"><!--título-->							
-						<label for="titulo_articulo"><p class="opcion_formulario">Título</p></label>
-						<input type="text" name="titulo_articulo" class="form-control" placeholder="Título del articulo" required="true">
+						<label for="titulo"><p class="opcion_formulario">Título</p></label>
+						<input type="text" name="titulo" class="form-control" placeholder="Título del articulo" required="true">
 					</div>
 
 					<!--************************boton visible en md y lg********************-->
@@ -43,10 +52,22 @@
 		</div><!--div fila categoria y titulo-->		
 
 		<!--******************alertas para categoría visible en md y lg************************************-->
-		<div class="row visible-md-block visible-lg-block">
-			<div id="alerta_exito_categoria_md" class="row alert alert-success" role="alert" hidden>
-			</div>
-		</div>	
+		{% if respuesta %}
+
+			{% if respuesta.error %}
+				<div class="row visible-md-block visible-lg-block">
+					<div id="alerta_error_categoria_md" class="row alert alert-warning" role="alert">
+						{{respuesta.error}}
+					</div>
+				</div>
+			{% else  %}
+				<div class="row visible-md-block visible-lg-block">
+					<div id="alerta_exito_categoria_md" class="row alert alert-success" role="alert">
+					{{respuesta.resultado}}
+					</div>
+				</div>	
+			{% endif %}
+		{% endif %}
 
 		<div class="row visible-md-block visible-lg-block">
 			<div id="alerta_error_categoria_md" class="row alert alert-warning" role="alert" hidden>
@@ -71,12 +92,17 @@
 
 		<!--******************imagen************************************-->
 		<div class="row">
-			<div class="form-group col-xs-12 col-xs-offset-1">
+			<div class="form-group col-xs-5 col-xs-offset-1">
 
 				<label for="imagen"><p class="opcion_formulario">Imágen</p></label>				
-				<input type="file" class="" name="imagen_articulo" id="imagen_articulo" />
+				<input type="file" class="" name="imagen" id="imagen_articulo" required />
 				<p class="help-block">Búsque una imagen para este libro...</p>
 
+			</div>
+
+			<div class="form-group col-md-6 text-center">
+				<label for="precio"><p class="opcion_formulario">Precio</p></label>
+				<input id="fecha_articulo" type="number" name="precio" step="0.01" class="form-control" required>					
 			</div>
 		</div>
 		<!--******************fin imagen************************************-->

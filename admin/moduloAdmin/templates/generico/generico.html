@@ -60,19 +60,25 @@
 						<ul class="nav nav-tabs navbar-nav row ">
 
 							<li><!--inicio servicios-->
-                      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        			<p class="opcion_cabecera">Libros<span class="caret"></span></p>
-                      			</a>  
-                            		
-                            	<ul class="dropdown-menu">
-                                	<li class="dropdown">
-										<a href="agregar-libro" >
-											Agregar libro
-                                   		</a>                                       
-                                		
-                           			</li>
-                            	</ul>
-                    		</li> <!--fin servicios-->
+            			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+              			<p class="opcion_cabecera">Libros<span class="caret"></span></p>
+            			</a>  
+                  		
+                  	<ul class="dropdown-menu">
+                    	<li class="dropdown">
+    										<a href="{% url 'agregarLibro' %}" >
+    											Agregar libro
+                        </a>
+                 			</li>
+
+                        <li class="dropdown">
+                          <a href="{% url 'editarLibros' %}" >
+                            Editar libros
+                          </a>
+                        </li>
+
+                  	</ul>
+          		</li> <!--fin servicios-->
                  
 							
 							<li class=""><!--inicio interes-->
@@ -146,9 +152,11 @@
 
         </div>
     </div><!--div container-->
+    {% block login %}
+    {% endblock %}
 
 
-
+    {% block menu_admin %} 
     <!--************************************menú administrar**************************************-->
 
     <div class="container menu_administrar" id="div_menu_administrar">
@@ -215,6 +223,7 @@
         </div>
       </nav>  
     </div><!--************************************menú administrar**************************************-->
+    {% endblock %}
   </div>
 
 
