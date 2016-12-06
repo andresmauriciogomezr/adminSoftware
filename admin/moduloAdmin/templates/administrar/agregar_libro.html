@@ -150,4 +150,64 @@
 
 </div>
 
+<div id="ventana_agregar_categoria" class="modal fade"><!--********ventana modal para agregar una categoria*********************-->
+					
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+			
+			<div class="modal-header" id="cabecera_modal">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;	</button>
+				<h4 class="modal-tittle" id="">Nueva categoría</h4>		
+			</div>
+			
+			
+			<form action="{% url 'nuevaCategoria' %}" method="post">
+				<div class="modal-body">			
+						{% csrf_token %}
+					<div class="row">							
+						<div class="form-group col-xs-12">
+							<label for="nombre" required><p class="opcion_formulario">Nombre</p></label>
+							<input type="text" name="nombre" class="form-control" placeholder="Nombre de la categoria" required>
+						</div>						
+					</div><!--fila 1-->
+
+					<div class="row">						
+						<div class="form-group col-xs-13">
+							<label for="descripcion"><p class="opcion_formulario">Descripción</p></label>
+							<textarea name="descripcion" class="form-control" placeholder="escriba una descripcion" required></textarea>
+						</div>
+					</div><!--fila 2-->
+
+
+					<div class="row">
+						
+						<!--************************alertas para categoria********************-->
+						<div class="row">
+							<div id="exito_form_categoria" class="row alert alert-success text-center" role="alert" hidden>
+							</div>
+						</div>	
+
+						<div class="row">
+							<div id="error_form_categoria" class="row alert alert-warning text-center" role="alert" hidden>
+							</div>
+						</div>				
+						<!--************************fin alertas********************-->
+
+
+					</div>
+
+				</div><!--cuerpo de la ventana-->
+				<div class="modal-footer">
+					<input type="submit" name="" value="Agregar">
+					<a href="#" data-dismiss="modal" class="btn btn-default">Cancelar</a>
+				</div>
+
+			</form>			
+
+		</div><!--modal content-->
+
+	</div><!--modal dialog-->
+</div>
+
 {% endblock %}

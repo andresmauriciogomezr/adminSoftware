@@ -1,0 +1,41 @@
+{% extends 'generico/generico.html' %}
+
+{% block contenido %} 
+
+<div class="container">
+	
+	<div class="titulo_pagina row" id="titulo_ingresar_articulo">
+			<blockquote class="page-header" style="padding-top:0px;">
+			<h5 id="titulo_pagina">Ventas existentes<small>Ventas...</small></h5>
+		</blockquote>        
+	</div>	
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		</div>
+				
+		<div class="panel-body">
+					
+			<table class="table table-condensed table-bordered" >
+				<tr>
+				  <td ><strong>Id de venta</strong></td>
+				  <td ><strong>Nombre del producto</strong></td>
+				  <td ><strong>Correo electrónico cliente</strong></td>		  
+				</tr>
+
+				{% for venta in ventas %}
+					<tr>
+					  <td >{{venta.id}}</td>
+					  <td >{{venta.cliente}}</td>
+					  <td >{{venta.libro}}</td>		  
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="panel-footer">
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'generico/generico.html' %}
+
+{% block contenido %} 
+
+<div class="container">
+				
+		<div class="titulo_pagina row" id="titulo_ingresar_servicio">
+			<blockquote class="page-header" style="padding-top:0px;">
+				<h5 id="titulo_pagina">Edíte los usuarios<small>Usuarios...</small></h5>
+			</blockquote>
+		</div>
+
+		{% for cliente in clientes %}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<p><strong>Correo electrónico: </strong>{{cliente.email}}</p>
+				</div>
+				<div class="panel-body">
+					<p><strong>Username: </strong>{{cliente.name}}</p>
+					<a class="enlace_modal btn" onclick="confirmar_eliminar_usuario({{cliente.username}})">Eliminar</a>
+				</div>
+				<div class="panel-footer">
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>	
+
+{% endblock %}

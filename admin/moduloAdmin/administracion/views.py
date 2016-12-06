@@ -77,3 +77,37 @@ def eliminarLibro(request):
 	contexto = {'libros' : libros}
 	return render(request, 'administrar/editar_libros.html', contexto)
 
+
+def verClientes(request):
+	servicio = Servicio()
+	
+	clientes = servicio.pedir('pedir-clientes')
+
+	#libros = servicio.pedir('listar-libros')
+	#contexto = {'libros' : libros}
+	#return render(request, 'administrar/editar_libros.html', contexto)
+	return render(request, 'administrar/editar_usuarios.html', {'clientes' : clientes})
+
+def verVentas(request):
+	servicio = Servicio()
+	
+	ventas = servicio.pedir('listar-ventas')
+
+	#libros = servicio.pedir('listar-libros')
+	#contexto = {'libros' : libros}
+	#return render(request, 'administrar/editar_libros.html', contexto)
+	return render(request, 'administrar/editar_ventas.html', {'ventas' : ventas})
+
+def nuevaCategoria(request):
+	datosEnviar = {
+		'nombre' : request.POST['nombre'],		
+		'descripcion' : request.POST['descripcion']
+		}
+
+	servicio = Servicio()
+	respuesta = servicio.enviar2('agregar-categoria', datosEnviar)
+
+	categorias = servicio.pedir('listar-categorias')
+	contexto = {'categorias' : categorias}
+	return render(request, 'administrar/agregar_libro.html', contexto)
+

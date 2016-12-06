@@ -132,6 +132,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-LOGIN_URL = reverse_lazy('usuarios: login')
-LOGOUT_URL = reverse_lazy('usuarios: registrar')
+#LOGIN_URL = reverse_lazy('usuarios: login');
+LOGOUT_URL = reverse_lazy('editarLibros');
 LOGIN_REDIRECT_URL = reverse_lazy('editarLibros');

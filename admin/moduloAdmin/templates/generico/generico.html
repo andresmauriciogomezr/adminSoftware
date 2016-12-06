@@ -23,19 +23,59 @@
 <div class="" id="div_cabecera">
 
 	<div class="container panel no_fondo" id="panel_lema_logo">
+
+
+
+
+<div class="row"><!--**************************************************login********************************-->
+              <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                   {% if user.is_authenticated %}
+                   {% else %}
+                        <li><a href="">Login</a></li> 
+
+                      {% endif %}                  
+                   
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          {{ user.username }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <a href="{% url 'logout' %}">
+                              Logout
+                            </a>
+
+                            <form id="logout-form" action="" method="POST" style="display: none;">
+                            </form>
+                          </li>
+                        </ul>
+                      </li>
+                </ul>
+            </div>
+        </div><!--**************************************************login********************************-->
+
+
         
 		<div class="row margen" >
 			
-			<div class="col-xs-13 col-md-4 " id="fila_logo">
+			<div class="col-xs-13 col-md-3 " id="fila_logo">
 	            <a id="opcion_administrar" href="" class="btn">
-	              <img src="" class="img-responsive img-rounded sombra_logo">
+	              <img src="http://bibliotecas.uaz.edu.mx/image/image_gallery?uuid=5cf5e473-c30f-48b8-ae56-9704448aafa2&groupId=12450&t=1337972443029" class="img-responsive img-rounded sombra_logo">
 	            </a>
 			</div>
 
 			<div class="col-md-7 col-md-offset-1 visible-md-block visible-lg-block ">             
 				
 				<div class="">
-					<h1 id="lema" class="">Consultoría Empresarial <small> Contable y Financiera </small></h1>   
+					<h1 id="lema" class="">BookStore<small> Los libros que deseas! </small></h1>   
 				</div>
 			</div>          
 
@@ -81,68 +121,59 @@
           		</li> <!--fin servicios-->
                  
 							
-							<li class=""><!--inicio interes-->
-                   
-                      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" >
-                        			<p class="opcion_cabecera">Interés<span class="caret"></span></p>
-                      			</a>             
+							<li><!--inicio servicios-->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    <p class="opcion_cabecera">Clientes<span class="caret"></span></p>
+                  </a>  
                       
-                     			<ul id="interes_cabecera" class="dropdown-menu">
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a href="{% url 'verClientes' %}" >
+                          Ver clientes
+                        </a>
+                      </li>
 
-                          			<li class="dropdown-submenu">
-                            			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              				Artículos
-                            			</a>                            
-                            
-                            			<ul class="dropdown-menu multi-level">
+                        <li class="dropdown">
+                          <a href="{% url 'editarLibros' %}" >
+                            Editar libros
+                          </a>
+                        </li>
 
-                                			<li class="dropdown-submenu">
-												<a href="#" class="dropdown-toggle " data-toggle="dropdown">
-												</a>
+                    </ul>
+              </li> <!--fin servicios-->
 
-												<ul id="lista_links_articulos" class="dropdown-menu multi-level">
-										
-													<li>                                         
-														<a href="" class="" >
-														</a>
-                                            		</li>                                       
-                                        
-                                        		</ul>
-
-											</li>
-                                    
-                            			</ul>
-
-                           			</li>
-
-								</ul>
-
-							</li><!--fin interes-->
-
-                   			<li><!--inicio servicios-->
-                      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        			<p class="opcion_cabecera">Servicios<span class="caret"></span></p>
-                      			</a>  
-                            		
-                            	<ul class="dropdown-menu">
-                                	<li class="dropdown-submenu">
-										<a href="#" class="dropdown-toggle " data-toggle="dropdown">
-                                   		</a>                                       
-                                        		
-                                		<ul id="lista_links_articulos" class="dropdown-menu multi-level">
-                                   			<li>                                         
-                                   				<a href="" class="" >
-                                   				</a>
-                                   			</li>                                       
-                                		</ul>
-                           			</li>
-                            	</ul>
-                    		</li> <!--fin servicios-->
+                <li><!--inicio servicios-->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    <p class="opcion_cabecera">Usuario<span class="caret"></span></p>
+                  </a>  
+                      
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a href="{% url 'registrar' %}" >
+                          Registrar Administrador
+                        </a>
+                      </li>
 
 
-							<li role="presentation" class="">
-		                    	<a href=""  class=""><p class="opcion_cabecera">Administrar</p></a>
-							</li>                 
+                    </ul>
+              </li> <!--fin servicios-->
+
+
+							 <li><!--inicio servicios-->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    <p class="opcion_cabecera">Ventas<span class="caret"></span></p>
+                  </a>  
+                      
+                    <ul class="dropdown-menu">
+                      <li class="dropdown">
+                        <a href="{% url 'verVentas' %}" >
+                          Ver ventas
+                        </a>
+                      </li>
+
+
+                    </ul>
+              </li> <!--fin servicios-->               
 
 						</ul>
 					</div>
@@ -180,44 +211,7 @@
               <li>
                 <a href="" id="titulo_menu_administrar navbar-right" class="navbar-brand opcion_administrar col-md-1" >Admin</a>
               </li>
-              <li role="presentation" class="dropdown opcion_administrar" id="link_articulos">
-                <a class="dropdown-toggle" role="button" id="drop_administrar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Artículos
-                <span class="caret"></span>
-                </a>
-
-                <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
-                  
-                  <li id="link_agregar_articulo" class="opcion_administrar" role="presentacion">
-                    <a href="">Agrege un atriculo</a>                    
-                  </li>
-
-                  <li id="link_ver_articulos" class="opcion_administrar" role="presentacion ">
-                    <a href="">Edíte sus articulos</a>                    
-                  </li>
-                  <li id="link_categorias" class="opcion_administrar" role="presentacion ">
-                    <a href="">Edíte sus categorías</a>                    
-                  </li>             
-                </ul>
-              </li>
-
-              <li role="presentation" class="dropdown opcion_administrar" id="link_servicios">
-                <a class="dropdown-toggle" role="button" id="drop_administrar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios
-                <span class="caret"></span>
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li id="link_agregar_servcio" class="opcion_administrar" role="presentacion">
-                    <a href="">Agrege un servicio</a> 
-                  </li>                             
-                  <li id="link_editar_servicios" class="opcion_administrar" role="presentacion">
-                    <a href="">Edíte sus servicios</a> 
-                  </li>                             
-                  <li id="link_editar_servicios" class="opcion_administrar" role="presentacion">
-                    <a href="">Edíte sus áreas</a> 
-                  </li>                             
-                </ul>
-              </li>
-                            
+                                         
             </ul>     
           </div>
         </div>
